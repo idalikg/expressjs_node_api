@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title%></title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="/">Inicio</a>
+            </li>
+        </ul>
+    </nav>
+    <h1>Listado de usuarios</h1>
+    <ul>
+        <% for(var x=0; x<users.length; x++) {%>
+            <li>
+                <b>Nombre: </b><%= users[x][0]%>
+                <br>
+                <b>Id:</b> <%= users[x][1].id%>
+                <br>
+                <b>Edad:</b> <%= users[x][1].age%>
+            </li>
+            <br>
+            <% } %>
+        </ul>
+        <hr>
+
+        <h2>Registrar usuarios</h2>
+        <form action="/new-user/" method="POST">
+            Nobre: <input type="text" name="newName" id="newName">
+            <br>
+            Edad: <input type="text" name="newAge" id="newAge">
+            <br>
+            <button>GUARDAR</button>
+        </form>
+
+    <script>
+        const inputName = document.querySelector('#newName');
+        const inputAge = document.querySelector('#newAge');
+        inputName.focus();
+    </script>
+    
+</body>
+</html>
