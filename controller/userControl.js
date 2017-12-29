@@ -8,24 +8,23 @@ const users = [
 
 const home = (req, res, next) => {
     // res.status(200).send('Página principal usuarios');
-    const data1 = {
+    let locals = {
         title : 'ALTA USUARIOS'
     };
-    res.status(200).render('index', data1);
-    next();
+    res.render('index', locals);
 };
 
 const listUsers = (req, res, next) => {
-    res.render('users', {
+    let locals = {
         title : "LISTA USUARIOS",
         users : users
-    });
+    }
+    res.render('users', locals);
     // const {nameUser} = req.params;
     // res.status(200).send(`${nameUser} has been REGISTERED!!!`, data);
-    next();
 };
 
-const register = (req, res) => {
+const register = (req, res, next) => {
     const { newName } = req.body;
     const { newAge } = req.body;
     
@@ -39,7 +38,7 @@ const register = (req, res) => {
 );
 
     res.redirect('/users');
-    // res.status(200).send(`${nameUser} has been REGISTERED!!!`, data);
+    // res.status(200).sennd(`${nameUser} has been REGISTERED!!!`, data);
 };
 
 module.exports = {
